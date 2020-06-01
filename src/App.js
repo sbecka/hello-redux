@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import HelloWorld from "./HelloWorld";
-import reducer from './reducers';
-import { createStore } from 'redux';
-const initialState = { tech: "React " };
-const store = createStore(reducer, initialState); // reducer is the mandatory argument
-// reducer always talks to the store, store needs to be invoked with a reducer
-// like Array.reduce(), createStore() responsible for passing the args into the reducer
-// reducer has state and action arguments
+import { store } from './store';
+import ButtonGroup from "./ButtonGroup";
 
 
 class App extends Component {
 
   render() {
-    return <HelloWorld tech={store.getState().tech} />;
+    return (
+      <div>
+        <HelloWorld key={1} tech={store.getState().tech} />
+        <ButtonGroup key={2} technologies={['React', 'Elm', 'React-redux']} />
+      </div>
+    );
   }
 }
 
